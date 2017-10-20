@@ -1,8 +1,9 @@
-from flask import Flask, render_template,redirect,url_for, request
+from flask import Flask, render_template,redirect,url_for, request,session
 import sqlite3
 
 
 app = Flask(__name__)
+app.secret_key = 'yolo'
 
 
 
@@ -50,7 +51,11 @@ def login():
 
 		if len(cursor)==1:
 			#return render_template for dashboard.html and replace return render_template
-			
+			for row in cursor:
+
+				session['email']=row[2];
+				session['emailpass']=row[3];
+
 			conn.close();
 			return "done!"
 
