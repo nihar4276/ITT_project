@@ -31,9 +31,11 @@ def register():
 		else:
 			message="Error! Please try again"
 
+		session['message']=message;
+
 	conn.commit()
 	conn.close();
-	return render_template('index.html',result=message);
+	return redirect('http://localhost:5000')
 
 @app.route("/login",methods = ['POST', 'GET'])
 def login():
@@ -61,9 +63,10 @@ def login():
 
 		else:
 			conn.close();
-			message='User not registered!'
-			return render_template('index.html',result=message)
-	
+			session['message']='User not registered!'
+			return redirect('http://localhost:5000')
+		
+		
 
 if __name__ == "__main__":
     app.run()

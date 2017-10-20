@@ -32,8 +32,8 @@
                                 <p class="login button"> 
                                     <input type="submit" value="Login" />
                                     <br>
-                                    {% if result %}
-                                      <b><center> {{ result }} </b> </center>
+                                    {% if session['message'] %}
+                                      <b><center> {{ session['message'] }} </b> </center>
 
 
                                     {%  endif  %}
